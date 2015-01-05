@@ -42,6 +42,61 @@
       0
       (+ (len(cdr lst)) 1)))
 
+(defun ask-number ()
+  (format t "Please enter a number. ")
+  (let ((val (read)))
+    (if (numberp val)
+	val
+	(ask-number))))
+
+(defun show-squares(start end)
+  (do ((i start (+ i 1)))
+      ((> i end) 'overall)
+    (format t "~A ~A~%" i (* i i))))
+
+
+
+(defun my-squre(start end)
+  (do ((i start (+ i 1)))
+      ((> i end) 'done)
+    (format t "~A ~A~%" i (* i i))))
+
+(defun our-length (lst)
+  (let ((len 0))
+    (dolist (obj lst)
+      (setf len (+ len 1)))
+    len))
+
+(defun mirror? (s)
+  (let ((len (length s)))
+    (and (evenp len)
+	 (let ((mid (/ len 2)))
+	   (equal (subseq s 0 mid)
+		  (reverse (subseq s mid)))))))
+
+(defun nthmost (n lst)
+   (nth (- n 1)
+       (sort (copy-list lst) #'>)))
+
+(defun our-reverse(lst)
+  (let ((acc nil))
+    (dolist (elt lst)
+      (push elt acc))
+    acc))
+
+
+(defun proper-list? (x)
+  (or (null x)
+      (and (consp x)
+	   (proper-list? (cdr x)))))
+
+(defun our-assoc(key alist)
+  (and (consp alist)
+       (let ((pair (car alist)))
+	 (if (eql key (car alist))
+	     pair
+	     (our-assoc key (cdr alist))))))
+
 (defun shortest-path(start end net)
   (bfs end (list (list start)) net))
 
