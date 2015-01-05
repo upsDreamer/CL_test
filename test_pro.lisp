@@ -42,3 +42,5 @@
       0
       (+ (len(cdr lst)) 1)))
 
+(defun shortest-path(start end net)
+  (bfs end (list (list start)) net))
