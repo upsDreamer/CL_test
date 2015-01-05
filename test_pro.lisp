@@ -112,7 +112,8 @@
 			   (new-paths path node net))
 		   net))))))
 
-(defun new-path (path node net)
+(defun new-paths (path node net)
   (mapcar #'(lambda (n)
 	      (cons n path))
 	  (cdr (assoc node net))))
+
