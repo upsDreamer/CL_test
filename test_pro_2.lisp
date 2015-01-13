@@ -4,8 +4,10 @@
 	 (finder obj vec 0 (- len 1)))))
 
 (defun finder (obj vec start end)
-  ;(format t "~A~%" (subseq vec start (+ end 1))
-	  (let ((range (- end start)))
+  ;(format t "~A~%" (subseq vec start (+ end 1)))
+  (print start)
+  (print end)
+  (let ((range (- end start)))
 	    (if (zerop range)
 		(if (eql obj (aref vec start))
 		    obj
@@ -18,5 +20,14 @@
 			    (finder obj vec start (- mid 1))
 			    (if (> obj obj2)
 				(finder obj vec (+ mid 1) end)
-				obj)))))))
-	  (format t "~A~%" (subseq vec start (+ end 1))))
+				obj))))))))
+;	  (format t "~A~%" (subseq vec start (+ end 1))))
+;
+
+;(defun finder (vec start end)
+;  (format t "~A~%" (subseq vec start (+ end 1)))
+(defun test_print (x y &optional z &rest others)
+  (print x)
+  (print y)
+  (print z)
+  (mapcar #'print others))
