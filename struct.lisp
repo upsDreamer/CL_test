@@ -38,6 +38,7 @@
   (and bst
        (or (bst-max (node-r bst)) bst)))
 
+;cant't work need modify
 (defun bst-remove (obj bst <)
   (if (null bst)
       nil
@@ -67,3 +68,8 @@
   (make-node :elt (node-elt (node-r bst))
 	     :l (node-l bst)
 	     :r (percolate (node-r bst))))
+
+(defun lperc (bst)
+  (make-node :elt (node-elt (node-l bst))
+	     :r (node-r bst)
+	     :l (percolate (node-l bst))))
